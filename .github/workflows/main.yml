@@ -53,7 +53,7 @@ jobs:
       - name: Build React App
         run: |
           cd web-app
-          npm ci
+          npm install
           npm run build
           tar cfz web-app.tar.gz ./build
       - name: upload linux artifact
