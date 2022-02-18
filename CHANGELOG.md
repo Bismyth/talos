@@ -1,3 +1,3 @@
-## Release 0.1.7
+## Release 0.1.8
 
 Hopefully fixing the CI
