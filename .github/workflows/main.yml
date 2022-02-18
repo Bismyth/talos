@@ -79,6 +79,7 @@ jobs:
 
   build-desktop:
     runs-on: windows-latest
+    needs: build
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v1
