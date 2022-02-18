@@ -2,10 +2,21 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "rootDir": "./",
+    "moduleResolution": "node",
     "outDir": "./build",
     "esModuleInterop": true,
-    "strict": true
+    "strict": true,
+    "alwaysStrict": true,
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "strictNullChecks": false
   },
-  "include": ["src"]
+  "include": ["src/**/*", "package.json"],
+  "exclude": ["node_modules", "build"]
 }

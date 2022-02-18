@@ -114,7 +114,7 @@ package-lock.json
 # testing
 /coverage
 
-
+build/
 
 #Desktop App
 desktop-app/out/

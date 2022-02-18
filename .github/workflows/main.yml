@@ -50,13 +50,13 @@ jobs:
         with:
           node-version-file: .nvmrc
 
-      - name: Build React App
+      - name: Build Web App
         run: |
           cd web-app
           npm install
           npm run build
-          tar cfz web-app.tar.gz ./build
-      - name: upload linux artifact
+          tar -C ./build cfz web-app.tar.gz ./
+      - name: Upload Web App
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -66,8 +66,34 @@ jobs:
           asset_name: web-app.tar.gz
           asset_content_type: application/gzip
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Build Desktop App
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          cd desktop-app
+          npm install
+          npm run make --platform=win32
+
+      - name: Upload Desktop App
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./desktop-app/out/make/squirrel.windows/x64/caption-assistant-0.1.0\ Setup.exe
+          asset_name: caption-assistant-0.1.0-Setup.exe
+          asset_content_type: application/vnd.microsoft.portable-executable
+
+      - name: Build API
+        run: |
+          cd server
+          npm install
+          npm run build
+          tar -C ./build -czf server.tar.gz ./
+      - name: Upload API
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./server/server.tar.gz
+          asset_name: server.tar.gz
+          asset_content_type: application/gzip

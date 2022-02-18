@@ -4,7 +4,8 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/app.ts"
+    "start": "nodemon src/app.ts",
+    "build": "tsc -p tsconfig.json && cp package.json ./build"
   },
   "dependencies": {
     "express": "^4.17.3"
