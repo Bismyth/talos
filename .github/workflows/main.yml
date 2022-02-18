@@ -55,7 +55,7 @@ jobs:
           cd web-app
           npm install
           npm run build
-          tar -C ./build cfz web-app.tar.gz ./
+          tar -C ./build -czf web-app.tar.gz ./
       - name: Upload Web App
         uses: actions/upload-release-asset@v1
         env:
